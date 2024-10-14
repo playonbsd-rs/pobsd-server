@@ -9,6 +9,7 @@ website that offers a frontend to the
 
 ##### Short/Middle term
 - [ ] Provide a real man page
+- [ ] Convert a search result into a RSS feed
 - [ ] Provide a tool for downloading metadata offline
 - [ ] Improve error handling and tracing
 - [ ] Write a rc script
