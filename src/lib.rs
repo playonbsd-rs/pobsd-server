@@ -1,0 +1,10 @@
+pub mod app;
+pub mod cmd;
+pub mod db;
+pub mod fetcher;
+pub mod handlers;
+pub mod igdb;
+pub mod metacritic;
+pub mod steam;
+pub mod updater;
+pub mod utils;

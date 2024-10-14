@@ -1,0 +1,10 @@
+<div class="control">
+  <div class="tags has-addons">
+    <span class="tag">TAGS</span>
+    {% for tag in tags %}
+      <a class="tag is-success is-capitalized" href="/?tag={{ tag }}">
+        {{ tag }}
+      </a>
+    {% endfor %}
+  </div>
+</div>

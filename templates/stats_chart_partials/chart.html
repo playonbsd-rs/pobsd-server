@@ -1,0 +1,11 @@
+<table id="chart" class="charts-css table bar show-labels data-spacing-10 show-heading data-center p-5">
+  <caption> <h3>{{ name }}</h3></caption>
+  <tbody>
+    {% for item in items %}
+      <tr>
+        <th scope="row"> {{ item.0 }}</th>
+          <td style="--size:calc( 1.2 * {{ coef }} * {{ item.1 }} / {{ game_stats.total_games }}); --color:#a35050;"><span class="data"><a href="/?{{ kind }}={{ item.2 }}">{{ item.1 }}</a></span></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}
+  Games recently added
+{% endblock %}
+{% block content %}
+  <div class="content">
+    <h3>Games recently added</h3>
+    <hr class="has-background-grey-darker">
+    {% for gr in game_representations %}
+      <div class="level">
+        <div class="level-left">
+          <strong class="has-text-grey-light is-uppercase"><a href="/{{ gr.game.uid }}">{{ gr.game.name }}</a></strong> 
+        </div>
+        <div class="level-right">
+          <div class="field is-grouped is-grouped-multiline">
+          {% match gr.game.tags %}
+            {% when Some with (tags) %}
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag">TAGS</span>
+                  {% for tag in tags %}
+                    <a class="tag is-success is-capitalized" href="/?tag={{ tag }}">
+                    {{ tag }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% when None %}
+          {% endmatch %}
+          {% match gr.game.genres %}
+            {% when Some with (genres) %}
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag">GENRES</span>
+                  {% for genre in genres %}
+                    <a class="tag is-dark is-capitalized" href="/?genre={{ genre }}">{{ genre }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% when None %}
+          {% endmatch %}
+          <div class="control">
+            <small class="is-uppercase">Added in {{ gr.game.added.format("%B %e, %Y") }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% match gr.metadata %}
+      {% when Some with (metadata) %}
+      <div class="columns">
+        <div class="column is-one-quarter">
+          {% match metadata.cover %}
+            {% when Some with (cover) %}
+              <figure>
+                <img style="max-height: 310px; max-width: 230px;" src="{{ cover }}">
+              </figure>
+            {% when None %}
+          {% endmatch %}
+        </div>
+        <div class="column">
+          {% match metadata.summary %}
+            {% when Some with (summary) %}
+              <p>
+              {{ summary }}
+              </p>
+            {% when None %}
+          {% endmatch %}
+          {% match metadata.story_line %}
+            {% when Some with (story_line) %}
+              </br>
+              <p>
+              {{ story_line }}
+              </p>
+            {% when None %}
+          {% endmatch %}
+        </div>
+      </div>
+      {% when None %}
+    {% endmatch %}
+    <hr class="has-background-grey-darker">
+    {% endfor %}
+  </div>
+{% endblock %}

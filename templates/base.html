@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" data-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/bulma.min.css" />
+    <link rel="stylesheet" href="/static/fontawesome5.min.css" />
+    <link id="favicon" rel="icon" type="image/png" href="/favicon.ico" />
+    {% block style %}
+    {% endblock %}
+    <title>
+      {% block title %}
+        PlayOnBSD Alternative Webstite
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    {% block navbar %}
+      {% include "partials/navbar.html" %}
+    {% endblock %}
+    <div class="container">
+      <section class="hero is-fullheight-with-navbar p-6" style="display: inherit;">
+        {% block content %}
+        {% endblock %}
+      </section>
+    </div>
+  </body>
+</html>

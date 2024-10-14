@@ -1,0 +1,71 @@
+<dt>
+  <div class="level">
+    <div class="level-left">
+      <a id="{{ item.uid }}" href="/{{ item.uid }}">
+        <strong class="has-text-grey-light is-uppercase">{{ item.name }}</strong> 
+      </a>
+    </div>
+    <div class="level-right">
+      <div class="field is-grouped is-grouped-multiline">
+        {% match item.tags %}
+          {% when Some with (tags) %}
+            {% include "partials/tags.html" %}
+          {% when None %}
+        {% endmatch %}
+        {% match item.genres %}
+          {% when Some with (genres) %}
+            {% include "partials/genres.html" %}
+          {% when None %}
+          {% endmatch %}
+        <div class="control">
+          {% match item.year %}
+            {% when Some with (year) %}
+              <a href="/?year={{ year }}">
+                {{ year }}
+              </a>
+            {% when None %}
+          {% endmatch %}
+        </div>
+      </div>
+    </div>
+  </div>
+</dt>
+<dl>
+  {% match item.version %}
+    {% when Some with (version) %}
+      {% include "partials/version.html" %}
+    {% when None %}
+  {% endmatch %}
+</dl>
+<dl>
+  {% match item.devs %}
+    {% when Some with (devs) %}
+      {% include "partials/devs.html" %}
+    {% when None %}
+  {% endmatch %}
+</dl>
+<dl>
+  {% match item.publis %}
+    {% when Some with (publis) %}
+      {% include "partials/publishers.html" %}
+    {% when None %}
+  {% endmatch %}
+</dl>
+<dl>
+  {% match item.engine %}
+    {% when Some with (engine) %}
+      {% include "partials/engine.html" %}
+    {% when None %}
+  {% endmatch %}
+</dl>
+<dl>
+  {% match item.runtime %}
+    {% when Some with (runtime) %}
+      {% include "partials/runtime.html" %}
+    {% when None %}
+  {% endmatch %}
+</dl>
+<dl>
+  {% let status = item.status.clone() %}
+  {% include "partials/status.html" %}
+</dl>

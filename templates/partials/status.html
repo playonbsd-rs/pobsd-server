@@ -1,0 +1,82 @@
+{% match status.status %}
+  {% when Status::Unknown %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Unknown 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::DoesNotRun %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Does not run 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::Launches %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Launches 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::MajorBugs %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Major bugs
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::MediumImpact %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Medium impact
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::MinorBugs %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Minor bugs 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::Completable %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Completable 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+  {% when Status::Perfect %}
+    <strong class="has-text-grey-light">Status:</strong>
+    <a href="/?status={{status.status}}">
+      Perfect 
+      {% match status.message %}
+        {% when Some with (message) %}
+          {{ message }}
+        {% when None %}
+      {% endmatch %}
+    </a>
+{% endmatch %}

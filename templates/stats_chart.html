@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block style %}
+    <link rel="stylesheet" href="/static/charts.min.css" />
+
+    <style>
+    .charts-css.bar {
+      --labels-size: 200px;
+    }
+    .charts-css a {
+      color: lightgray;
+      text-decoration: underline;
+    }
+    /* Labels */
+    tbody th {
+      color: grey !important;
+    }
+
+    </style>
+    
+{% endblock %}
+{% block content %}
+<div class="content">
+  <h1>
+  <span class="icon">
+  <i class="fas fa-paperclip"></i>
+  </span>
+  &nbsp;Some graphs
+  </h1>
+  <div class="fixed-grid has-1-cols has-text-white">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.status_stats.clone() %}
+        {% let name = "Number of games by status" %}
+        {% let coef = 0.8 %}
+        {% let kind = "status" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.year_stats.clone() %}
+        {% let name = "Number of games by year of release (Top 15)" %}
+        {% let kind = "year" %}
+        {% let coef = 5 %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.tag_stats.clone() %}
+        {% let name = "Number of games by tag (Top 15)" %}
+        {% let coef = 1.2 %}
+        {% let kind = "tag" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.genre_stats.clone() %}
+        {% let name = "Number of games by genre (Top 15)" %}
+        {% let coef = 4 %}
+        {% let kind = "genre" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.engine_stats.clone() %}
+        {% let name = "Number of games by engine (Top 15)" %}
+        {% let coef = 1.5 %}
+        {% let kind = "engine" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.runtime_stats.clone() %}
+        {% let name = "Number of games by runtime (Top 15)" %}
+        {% let coef = 1.5 %}
+        {% let kind = "runtime" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.dev_stats.clone() %}
+        {% let name = "Number of games by developper (Top 15)" %}
+        {% let coef = 18 %}
+        {% let kind = "dev" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+    <div class="grid">
+      <div class="cell">
+        {% let items = game_stats.publi_stats.clone() %}
+        {% let name = "Number of games by publisher (Top 15)" %}
+        {% let coef = 18 %}
+        {% let kind = "publi" %}
+        {% include "stats_chart_partials/chart.html" %}
+      </div>
+    </div>
+    <hr class="has-background-grey-darker">
+
+
+  </div>
+</div>
+{% endblock %}

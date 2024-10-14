@@ -1,0 +1,9 @@
+<strong class="has-text-grey-light">Publisher:</strong> 
+  {% for publi in publis %}
+    <a href="/?publi={{ publi }}">
+      {{ publi }}
+    </a>
+    {% if !loop.last %}
+    /
+  {% endif %}
+{% endfor %}

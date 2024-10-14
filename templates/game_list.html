@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if paginator.last_page > 1 %}
+    {% include "game_list_partials/pagination.html" %}
+  {% endif %}
+  {% if games.is_empty() %}
+    NO GAME FOUND
+  {% endif %}
+  <dl class="has-text-grey-light">
+  {% for item in games %}
+    {% include "game_list_partials/game_in_list.html" %}
+    <hr class="has-background-grey-darker">
+  {% endfor %}
+  {% if paginator.last_page > 1 %}
+    {% include "game_list_partials/pagination.html" %}
+  {% endif %}
+{% endblock %}

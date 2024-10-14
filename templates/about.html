@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="content">
+	  <h3>About</h3>
+	  <p>This web site is developed and maintained by Hukadan (me [at] hukadan.org)</p>
+	  <p>
+	    This web site is generated using the data provided by <a href="https://github.com/playonbsd/OpenBSD-Games-Database">https://github.com/playonbsd/OpenBSD-Games-Database</a>. For the original see
+	    <a href="https://playonbsd.com/">https://playonbsd.com/</a>.
+	  </p>
+	  <p>Game summaries, storylines and most of the images are provided by <a href="https://igdb.com">IGDB</a>.</p>
+	  <h4>Game status</h4>
+	  Here is the meaning of each status:
+	  <ul>
+	    <li><strong>Doesn't run:</strong> speaks for itself.</li>
+	    <li><strong>Game launches:</strong> not enough information to comment meaningfully on status beyond launching the game.</li>
+	    <li><strong>Major bugs:</strong> potentially game-breaking, making finishing the game impossible or a chore; noticeably degrading the enjoyment compared to running the game on other platforms.</li>
+	    <li><strong>Medium impact bugs:</strong> noticeable, but not game-breaking.</li>
+	    <li><strong>Minor bugs:</strong> barely noticeable, or not relevant to core game.</li>
+	    <li><strong>Completable:</strong> game can be played through until the credits roll, without major bugs (category 2); doesn't (necessarily) include optional side content, DLC, optional multiplayer, achievements etc.</li>
+	    <li><strong>Perfect:</strong> the complete game including optional content like DLC, side quests, multiplayer can be enjoyed.</li>
+	  </ul>
+	  <p>
+	    If you think that the status of a game is incorrect or need to be updated, please do not hesitate to report it at <a href="https://github.com/playonbsd/OpenBSD-Games-Database">https://github.com/playonbsd/OpenBSD-Games-Database</a>, at
+	    <a href="https://bsd.network/@thfr">@thfr@bsd.network</a> or on #openbsd-gaming (IRC).
+	  </p>
+	  <h4>You want to help?</h4>
+	  If you own one of <a href="/?status=launches">those games</a>, then play a bit with them and report how far you went. If you own one of <a href="/?status=unknown">those games</a>, then any information regarding playing them on OpenBSD is
+	  of interest.
+	</div>
+{% endblock %}
+

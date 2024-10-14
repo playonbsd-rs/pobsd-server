@@ -1,0 +1,28 @@
+.Dd September 21, 2024
+.Dt POBSD-SERVER.CONF 5
+.Os
+.Sh NAME
+.Nm pobsd-server.conf
+.Nd 
+pobsd-server daemon configuration file
+.Sh DESCRIPTION
+.Nm
+is the configuration file of the pobsd-server daemon,
+.Xr pobsd-server 1 .
+.Nm is divided into the following sections:
+.Bl -tag -width xxxx
+.It Sy Server
+Settings for the web server.
+.It Sy Igdb
+Credentials for the IGDB database.
+.It Sy Misc
+Other settings.
+.El
+.Sh SERVER
+Here are the server settings:
+.Bl -tag -width xxxx
+.It Sy port
+Set the listen port.
+.It Sy address
+Set the listen address.
+.El

@@ -1,0 +1,9 @@
+<strong class="has-text-grey-light">Developer:</strong>
+{% for dev in devs %}
+  <a href="/?dev={{ dev }}">
+    {{ dev }}
+  </a>
+  {% if !loop.last %}
+    /
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ game.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="level">
+    <div class="level-left">
+      <strong style="font-size: 130%;" class="has-text-grey-light is-uppercase">{{ game.name }}</strong> 
+      {% match metadata.clone() %}
+        {% when Some with (metadata) %}
+          {% match metadata.metacritic %}
+            {% when Some with (metacritic) %}
+              {% if metacritic.score > 0 %}
+                <div class="tags has-addons">
+                  <span class="tag">METACRITIC SCORE</span>
+                    <a class="tag is-link is-capitalized" href="{{ metacritic.url }}">
+                      {{ metacritic.score }}
+                  </a>
+                </div>
+              {% endif %}
+            {% when None %}
+          {% endmatch %}
+        {% when None %}
+      {% endmatch %}
+    </div>
+    <div class="level-right">
+      <div class="field is-grouped is-grouped-multiline">
+        {% match game.tags %}
+          {% when Some with (tags) %}
+            {% include "partials/tags.html" %}
+          {% when None %}
+        {% endmatch %}
+        {% match game.genres %}
+          {% when Some with (genres) %}
+            {% include "partials/genres.html" %}
+          {% when None %}
+        {% endmatch %}
+      </div>
+    </div>
+  </div>
+
+  <hr class="has-background-grey-darker">
+
+  <div class="columns">
+
+    {% match metadata %}
+      {% when Some with (metadata) %}
+
+        <div class="column is-3">
+          {% match metadata.cover %}
+            {% when Some with (cover) %}
+              <img src="{{ cover }}">
+            {% when None %}
+          {% endmatch %}
+        </div>
+
+        <div class="column is-5 content">
+          {% match metadata.summary %}
+            {% when Some with (summary) %}
+              <p>{{ summary }}</p>
+            {% when None %}
+          {% endmatch %}
+          {% match metadata.story_line %}
+            {% when Some with (story_line) %}
+            <p>{{ story_line }}</p>
+            {% when None %}
+          {% endmatch %}
+        </div>
+
+      {% when None %}
+    {% endmatch %}
+
+    <div class="column is-4 content">
+      <div class="card has-background-black-ter" style="--bulma-card-radius:0.1rem;--bulma-card-shadow:none">
+        <div class="card-content" style="overflow-wrap:anywhere;">
+          <div class="content">
+            {% match game.year %}
+              {% when Some with (year) %}
+                <p class="has-text-grey-light"><strong class="has-text-grey-light">Release date</strong>: {{ year }}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.version %}
+              {% when Some with (version) %}
+              <p>
+                {% include "partials/version.html" %}
+              </p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.engine %}
+              {% when Some with (engine) %}
+                <p> {% include "partials/engine.html" %}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.setup %}
+              {% when Some with (setup) %}
+                <p class="has-text-grey-light"><strong class="has-text-grey-light">Setup</strong>: {{ setup }}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.runtime %}
+              {% when Some with (runtime) %}
+                <p> {% include "partials/runtime.html" %}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.hints %}
+              {% when Some with (hints) %}
+                <p class="has-text-grey-light"><strong class="has-text-grey-light">Hints</strong>: {{ hints }}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.devs %}
+              {% when Some with (devs) %}
+                <p> {% include "partials/devs.html" %}</p>
+              {% when None %}
+            {% endmatch %}
+            {% match game.publis %}
+              {% when Some with (publis) %}
+                <p> {% include "partials/publishers.html" %}</p>
+              {% when None %}
+            {% endmatch %}
+            <p>
+              {% let status = game.status.clone() %}
+              {% include "partials/status.html" %}
+            </p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          {% match game.stores %}
+            {% when Some with (stores) %}
+              <p class="card-footer-item has-text-grey-light"><span>Available on
+                {% for store in stores.clone() %}{% if !loop.first && !loop.last %}, {% endif %}{% if !loop.first && loop.last %} and {% endif %}<a href="{{ store }}">{{- store.store -}}</a>{% if loop.last %}.{% endif %}{% endfor %}</span>
+              </p>
+            {% when None %}
+          {% endmatch %}
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="has-background-grey-darker">
+  <div class="field is-grouped is-grouped-multiline is-justify-content-center">
+    {% match metadata %}
+      {% when Some with (metadata) %}
+        {% for img in metadata.screenshots %}
+          <div class="cell">
+            <figure class="ml-1 mr-1" style="max-width: 600px;">
+              <img src="{{ img }}" style="max-width: 600px;">
+            </figure>
+          </div>
+        {% endfor %}
+      {% when None %}
+    {% endmatch %}
+  </div>
+
+
+
+  
+{% endblock %}
+

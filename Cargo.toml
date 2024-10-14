@@ -1,0 +1,29 @@
+[package]
+name = "pobsd-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ammonia = "4.0.0"
+anyhow = "1.0.89"
+askama = { version = "0.12.1", features = ["with-axum"] }
+askama_axum = "0.4.0"
+axum = "0.7.6"
+chrono = "0.4.38"
+clap = "4.5.18"
+igdb = "0.1.2"
+libpobsd = "0.4.0"
+pledge = "0.4.2"
+rand = "0.8.5"
+reqwest = "0.12.7"
+rss = "2.0.9"
+rust-ini = "0.21.1"
+scraper = "0.20.0"
+serde = { version = "1.0.210", features = ["derive", "serde_derive"] }
+serde_json = "1.0.128"
+slug = "0.1.6"
+tokio = { version = "1.40.0", features = ["full"] }
+tower-http = { version = "0.6.1", features = ["trace"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+unveil = "0.3.2"

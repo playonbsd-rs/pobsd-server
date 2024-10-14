@@ -1,0 +1,8 @@
+<div class="control">
+  <div class="tags has-addons">
+    <span class="tag">GENRES</span>
+    {% for genre in genres %}
+      <a class="tag is-dark is-capitalized" href="/?genre={{ genre }}">{{ genre }}</a>
+    {% endfor %}
+  </div>
+</div>
