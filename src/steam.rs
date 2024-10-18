@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use reqwest::StatusCode;
 use serde::Deserialize;
 
 use crate::db::data::{GameMetaData, Metacritic};
@@ -19,12 +20,12 @@ impl From<SteamMetacritic> for Metacritic {
     }
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Clone, Deserialize, Debug, Default)]
 pub struct Screenshot {
     pub path_thumbnail: String,
 }
 
-#[derive(Deserialize, Default)]
+#[derive(Clone, Deserialize, Debug, Default)]
 pub struct SteamMetaData {
     pub about_the_game: String,
     pub short_description: String,
@@ -79,6 +80,13 @@ impl SteamClient {
             "https://shared.steamstatic.com/store_item_assets/steam/apps/{}/hero_capsule.jpg",
             steam_id
         );
+        let cover = match reqwest::get(&cover).await?.status() {
+            StatusCode::OK => cover,
+            _ => format!(
+                "https://shared.steamstatic.com/store_item_assets/steam/apps/{}/header.jpg",
+                steam_id
+            ),
+        };
         let re: String = reqwest::get(format!("{}{}", self.url, steam_id))
             .await?
             .text()

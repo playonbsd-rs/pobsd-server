@@ -11,13 +11,24 @@ pub struct IgdbMetaData {
     pub cover: String,
 }
 
+fn get_not_empty(item: String) -> Option<String> {
+    if item.is_empty() {
+        None
+    } else {
+        Some(item)
+    }
+}
+
 impl From<IgdbMetaData> for GameMetaData {
     fn from(value: IgdbMetaData) -> Self {
+        let summary = get_not_empty(value.summary);
+        let story_line = get_not_empty(value.story_line);
+        let cover = get_not_empty(value.cover);
         Self {
-            summary: Some(value.summary),
-            story_line: Some(value.story_line),
+            summary,
+            story_line,
             screenshots: value.screenshots,
-            cover: Some(value.cover),
+            cover,
             metacritic: None,
         }
     }

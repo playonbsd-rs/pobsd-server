@@ -25,8 +25,13 @@ impl From<MetacriticMetaData> for GameMetaData {
             score: x.rating_value,
             url: value.url,
         });
+        let summary = if value.description.is_empty() {
+            None
+        } else {
+            Some(value.description)
+        };
         Self {
-            summary: Some(value.description),
+            summary,
             story_line: None,
             cover: None,
             metacritic,

@@ -1,12 +1,14 @@
 use std::fmt::Debug;
 
-#[derive(Debug, Clone, Default)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct Metacritic {
     pub score: usize,
     pub url: String,
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct GameMetaData {
     pub summary: Option<String>,
     pub story_line: Option<String>,
