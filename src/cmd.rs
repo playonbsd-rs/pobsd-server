@@ -3,7 +3,7 @@ use clap::{Arg, ArgAction, Command};
 pub fn get_args() -> Command {
     Command::new("pobsd-server")
         .about("playonbsd alternative website")
-        .version("0.1.0")
+        .version(env!("CARGO_PKG_VERSION"))
         .arg(
             Arg::new("config")
                 .action(ArgAction::Set)
